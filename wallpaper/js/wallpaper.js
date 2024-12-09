@@ -118,10 +118,9 @@ class Cercle {
     }
 
     handleClick() {
-        // Réinitialise les propriétés quand le cercle est cliqué
+        audio.play();
         console.log(`Cercle cliqué à la position (${this.x}, ${this.y})`);
         
-
         // Create the text element
         const floatingText = document.createElement('div');
         floatingText.textContent = "+1";
@@ -209,3 +208,5 @@ document.addEventListener('click', function(event) {
         ripple.remove();
     });
 });
+
+const audio = new Audio('media/pop.wav'); // Provide the path to your sound file
