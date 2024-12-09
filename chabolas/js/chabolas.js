@@ -15,7 +15,7 @@ class Circle {
 
         this.color = color; // Visual representation (can be changed to an image later)
 
-        this.size = type * 5; // Radius based on the type
+        this.size = type * 25; // Radius based on the type
         this.radius = this.size / 2; // Radius of the circle
         this.mass = this.size ** 2; // Mass proportional to the size
 
@@ -23,7 +23,7 @@ class Circle {
 
         this.element.style.width = `${this.size}px`;
         this.element.style.height = `${this.size}px`;
-        this.element.style.backgroundColor = `hsl(${type * 360}, 80%, 60%)`;
+        this.element.style.backgroundColor = `hsl(${type * 72}, 80%, 60%)`;
     }
 
     updatePosition() {
@@ -68,6 +68,33 @@ class Circle {
 
         // Vérifie si les deux cercles se chevauchent
         if (distance < (this.size + other.size) / 2) {
+            if (this.type === other.type && !this.isMerged && !other.isMerged) {
+                const avgx = (this.x + other.x) / 2;
+                const avgy = (this.y + other.y) / 2;
+                this.isMerged = true;
+                other.isMerged = true;
+                
+                const circle = new Circle(
+                    avgx,
+                    avgy,
+                    this.type + 1, // Upgrade to the next type
+                );
+
+                // Remove the old circles from the DOM
+                this.element.remove();
+                other.element.remove();
+
+                // Remove the old circles from the array
+                circles.splice(circles.indexOf(this), 1);
+                circles.splice(circles.indexOf(other), 1);
+
+                circles.push(circle);
+                score += 2 ** (circle.type - 2);
+                scoreElement.textContent = `Score: ${score}`;
+
+                return true;
+            }
+
             const normalX = dx / distance;
             const normalY = dy / distance;
 
@@ -120,22 +147,6 @@ class Circle {
             other.updatePosition();
         }
     }
-    
-        // Handle merging logic
-        mergeWith(other) {
-            if (this.type === other.type && !this.isMerged && !other.isMerged) {
-                this.isMerged = true;
-                other.isMerged = true;
-                return new Circle(
-                    this.x,
-                    this.y,
-                    this.type + 1, // Upgrade to the next type
-                    0,
-                    'green' // Example of next color
-                );
-            }
-            return null;
-        }
 }
 
 // Container dans lequel les cercles sont placés pour le jeu
@@ -166,11 +177,11 @@ class Container{
         document.body.appendChild(rightWall);
 
         const bottomWall = document.createElement('div');
-        topWall.classList.add('container');
-        topWall.style.width = `${width}px`;
-        topWall.style.height = `${thickness}px`;
+        bottomWall.classList.add('container');
+        bottomWall.style.width = `${width}px`;
+        bottomWall.style.height = `${thickness}px`;
         bottomWall.style.left = centerx - width / 2 + 'px';
-        bottomWall.style.top = centery - height / 2 - thickness + 'px';
+        bottomWall.style.top = centery + height / 2 - thickness + 'px';
         document.body.appendChild(bottomWall);
 
 
@@ -178,7 +189,11 @@ class Container{
 
 }
 
-const container = new Container(800, 1000, 20);
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+
+//const container = new Container(800, 800, 20);
 
 // Créer et animer les cercles
 const circles = [];
@@ -187,7 +202,7 @@ for (let i = 0; i < 10; i++) { // Ajoute 10 cercles
     const circle = new Circle(
         Math.random() * window.innerWidth,
         Math.random() * window.innerHeight,
-        Math.random() * 10 + 10);
+        getRandomInt(5));
     circle.element.onclick = () => circle.handleClick();
     circles.push(circle);
 }
@@ -215,3 +230,10 @@ document.addEventListener('click', function(event) {
     const circle = new Circle(event.clientX, event.clientY, 1);
     circles.push(circle);
 });
+
+var score = 0;
+const scoreElement = document.createElement('div');
+scoreElement.classList.add('score');
+document.body.appendChild(scoreElement);
+scoreElement.textContent = `Score: ${score}`;
+
