@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: #87CEEB; /* Couleur de fond */
+    font-family: Arial, sans-serif;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    box-shadow: -5px -3px 0 rgba(0, 0, 0, 0.2); /* Effet d'œil */
+    transition: transform 0.2s; /* Effet visuel pour le clic */
+}
+
+.container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1155AA; /* Couleur de fond */
+}

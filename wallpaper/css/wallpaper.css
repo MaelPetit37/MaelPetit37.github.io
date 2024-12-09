@@ -1,0 +1,17 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: #87CEEB; /* Couleur de fond */
+    font-family: Arial, sans-serif;
+}
+
+.fish {
+    position: absolute;
+    border-radius: 50%;
+    box-shadow: -5px -3px 0 rgba(0, 0, 0, 0.2); /* Effet d'œil */
+    transition: transform 0.2s; /* Effet visuel pour le clic */
+}
+
+.fish:hover {
+    transform: scale(1.2); /* Agrandissement lors du survol */
+}
