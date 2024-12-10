@@ -48,7 +48,11 @@ class Circle {
 
         // Add gravity
         if(this.y < container.bottomInnerBound - this.radius - 5)
-            this.vy += 0.1;
+            this.vy += gravity;
+        else {
+            var step = (container.bottomInnerBound - this.radius - this.y) / 2;
+            this.y += step;
+        }
 
         // Lose some energy
         this.vx *= 0.98;
@@ -288,9 +292,11 @@ function animate() {
 const centerx = window.innerWidth / 2;
 const centery = window.innerHeight / 2;
 
+const gravity = 0.5;
 const maxTypes = 4;
 const typetosize = 25;
 const spawnY = 100;
+const spawnDelay = 700;
 const width = 600;
 const height = 800;
 const thickness = 20;
@@ -311,9 +317,7 @@ for (let i = 0; i < 10; i++) { // Ajoute 10 cercles
 }
 */
 document.addEventListener('click', function(event) {
-    console.log(`Clic à la position (${event.clientX}, ${event.clientY})`);
     if (gameOver) return;
-
     if (!nextcircle) return;
 
     circles.push(new Circle(
@@ -334,11 +338,12 @@ document.addEventListener('click', function(event) {
 
     setTimeout(() => {
         nextcircle = new Circle(newX, spawnY, type);
-    }, 500); // Delay of 1000 milliseconds (1 second)
+    }, spawnDelay); // Delay of 1000 milliseconds (1 second)
 });
 
 document.addEventListener('mousemove', (event) => {
     if (gameOver) return;
+    if (!nextcircle) return;
     newX = getNewX(event.clientX, nextcircle.radius);
 
     // Update the position of the next circle
