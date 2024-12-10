@@ -292,7 +292,7 @@ function animate() {
 const centerx = window.innerWidth / 2;
 const centery = window.innerHeight / 2;
 
-const gravity = 0.5;
+const gravity = 0.3;
 const maxTypes = 4;
 const typetosize = 25;
 const spawnY = 100;
