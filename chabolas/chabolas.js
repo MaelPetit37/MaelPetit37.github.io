@@ -2,13 +2,15 @@ class Circle {
     constructor(x, y, type, vy = 0) {
         this.type = type; // Type of the fruit (e.g., 'cherry', 'watermelon')
 
-        this.x = x; // X position
+        this.x = x ?? newX; // X position
         this.y = y; // Y position
 
         this.vx = 0; // Horizontal speed
         this.vy = vy; // Vertical speed
 
-        this.size = type * typetosize; // Radius based on the type
+        this.rotationSpeed = 0; // Rotation speed
+
+        this.size = type ** 0.9 * typetosize; // Radius based on the type
         this.radius = this.size / 2; // Radius of the circle
         this.mass = this.size ** 2; // Mass proportional to the size
 
@@ -19,7 +21,12 @@ class Circle {
         this.element.classList.add('circle');
         this.element.style.width = `${this.size}px`;
         this.element.style.height = `${this.size}px`;
-        this.element.style.backgroundColor = `hsl(${type * 72}, 80%, 60%)`;
+
+        //this.element.style.backgroundColor = `hsl(${type * 72}, 80%, 60%)`;
+        this.element.style.backgroundImage = `url('assets/jan.png')`;
+        this.element.style.backgroundSize = 'cover';
+        this.element.style.backgroundPosition = 'center';
+
         this.updatePosition();
         document.body.appendChild(this.element);
     }
@@ -39,19 +46,25 @@ class Circle {
     updatePosition() {
         this.element.style.left = `${this.x - this.radius}px`;
         this.element.style.top = `${this.y - this.radius}px`;
+
+        this.element.style.animation = "rotate " + 1 / Math.abs(this.rotationSpeed) + "s linear infinite" + (this.rotationSpeed < 0 ? " reverse" : "");
     }
 
-    move() {
+    move(delta) {
         // Mettre à jour la position
-        this.x += this.vx;
-        this.y += this.vy;
+        this.x += this.vx * delta * gameSpeed;
+        this.y += this.vy * delta * gameSpeed;
 
         // Add gravity
         if(this.y < container.bottomInnerBound - this.radius - 5)
             this.vy += gravity;
         else {
+            // Slow down the circle when it hits the ground
             var step = (container.bottomInnerBound - this.radius - this.y) / 2;
             this.y += step;
+            // Friction
+            this.vx *= 0.98;
+            this.rotationSpeed *= 0.98;
         }
 
         // Lose some energy
@@ -62,14 +75,17 @@ class Circle {
         if (this.x < container.leftInnerBound + this.radius) {
             this.vx *= -1; // Rebond horizontal
             this.x = container.leftInnerBound + this.radius;
+            this.rotationSpeed = rotationScale * this.vy * this.vx;
         }
         else if (this.x > container.rightInnerBound - this.radius) {
             this.vx *= -1; // Rebond horizontal
             this.x = container.rightInnerBound - this.radius;
+            this.rotationSpeed = rotationScale * this.vy * this.vx;
         }
         if (this.y > container.bottomInnerBound - this.radius) {
             this.vy *= -1; // Rebond vertical
             this.y = container.bottomInnerBound - this.radius;
+            this.rotationSpeed = rotationScale * this.vx **2;
         }
 
         if (this.y > window.innerHeight - this.radius) {
@@ -154,6 +170,14 @@ class Circle {
 
             other.vx = newV2nX + newV2tX * 0.9;
             other.vy = newV2nY + newV2tY * 0.9;
+
+            // Calculate change in tangential velocity (scaled by radius)
+            const velocityChange1 = (v2t - v1t) * this.radius * rotationScale * 0.1;
+            const velocityChange2 = (v1t - v2t) * other.radius * rotationScale * 0.1;
+
+            // Update rotation speeds (simplified angular velocity update)
+            this.rotationSpeed += velocityChange1 * rotationScale;
+            other.rotationSpeed += velocityChange2 * rotationScale;
 
             // Éloigner légèrement les cercles pour éviter un chevauchement prolongé
             const angle = Math.atan2(dy, dx);
@@ -268,13 +292,27 @@ function checkGameOver(circle) {
     }
 }
 
+// # region functions
+
+function updateFps() {
+    fps = 1000 / (time2 - time1);
+    fpsElement.textContent = `FPS: ${fps.toFixed(0)}`;
+}
+
 // Animer les cercles
 function animate() {
     if (gameOver) return;
-    // Déplace chaque cercle
-    circles.forEach(circle => circle.move());
 
-    // Vérifie les collisions entre les cercles
+    // Update the positions of the circles
+    time2 = Date.now();
+    circles.forEach(circle => circle.move(time2 - time1));
+    if (time2 - fpsUpdateTime > 200) {
+        updateFps();
+        fpsUpdateTime = time2;
+    }
+    time1 = time2;
+
+    // Check for collisions between circles
     for (let i = 0; i < circles.length; i++) {
         for (let j = i + 1; j < circles.length; j++) {
             circles[i].handleCollision(circles[j]);
@@ -288,13 +326,17 @@ function animate() {
     requestAnimationFrame(animate);
 }
 
-// Variables globales
+// #endregion
+
+// #region Variables globales
 const centerx = window.innerWidth / 2;
 const centery = window.innerHeight / 2;
 
 const gravity = 0.3;
-const maxTypes = 4;
-const typetosize = 25;
+const gameSpeed = 0.3;
+const rotationScale = 0.5;
+const maxTypes = 3;
+const typetosize = 50;
 const spawnY = 100;
 const spawnDelay = 700;
 const width = 600;
@@ -303,6 +345,10 @@ const thickness = 20;
 const container = new Container(width, height, thickness);
 
 var gameOver = false;
+var time1 = Date.now();
+var time2;
+var fpsUpdateTime = 0;
+// #endregion
 
 // Créer et animer les cercles
 const circles = [];
@@ -333,12 +379,10 @@ document.addEventListener('click', function(event) {
     nextcircle.element.remove();
     nextcircle = null;
     var type = getRandomInt(maxTypes);
-    var radius = type * 25 / 2;
-    newX = getNewX(event.clientX, radius);
-
+    
     setTimeout(() => {
-        nextcircle = new Circle(newX, spawnY, type);
-    }, spawnDelay); // Delay of 1000 milliseconds (1 second)
+        nextcircle = new Circle(null, spawnY, type);
+    }, spawnDelay);
 });
 
 document.addEventListener('mousemove', (event) => {
@@ -354,10 +398,16 @@ document.addEventListener('mousemove', (event) => {
 
 var score = 0;
 const scoreElement = document.createElement('div');
-scoreElement.classList.add('score');
+scoreElement.classList.add('text', 'score');
 document.body.appendChild(scoreElement);
 scoreElement.textContent = `Score: ${score}`;
-const audio = new Audio('media/pop.wav'); // Provide the path to your sound file
+
+const fpsElement = document.createElement('div');
+fpsElement.classList.add('text', 'fps');
+document.body.appendChild(fpsElement);
+fpsElement.textContent = `FPS:`;
+
+const audio = new Audio('assets/pop.wav'); // Provide the path to your sound file
 
 // Créer un cercle au dessus du container, à la position horizontale de la souris
 var nextcircle = new Circle(centerx, spawnY, getRandomInt(maxTypes));

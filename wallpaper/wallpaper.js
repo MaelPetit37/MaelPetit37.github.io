@@ -20,6 +20,7 @@ class Cercle {
 
         // Taille aléatoire
         this.size = Math.random() * 30 + 20; // Entre 20px et 50px
+        this.radius = this.size / 2;
         this.mass = this.size ** 2; // Masse proportionnelle à la taille
         this.element.style.width = `${this.size}px`;
         this.element.style.height = `${this.size}px`;
@@ -31,8 +32,8 @@ class Cercle {
     }
 
     updatePosition() {
-        this.element.style.left = `${this.x}px`;
-        this.element.style.top = `${this.y}px`;
+        this.element.style.left = `${this.x - this.radius}px`;
+        this.element.style.top = `${this.y - this.radius}px`;
     }
 
     move() {
@@ -41,17 +42,19 @@ class Cercle {
         this.y += this.vy;
 
         // Vérifier les collisions avec les bords
-        if (this.x < 0 || this.x > window.innerWidth - this.size) {
+        if (this.x < this.radius || this.x > window.innerWidth - this.radius) {
             this.vx *= -1; // Rebond horizontal
 
-            if (this.x < 0) this.x = 0;
-            if (this.x > window.innerWidth - this.size) this.x = window.innerWidth - this.size;
+            //if (this.x < this.radius) this.x = this.radius;
+            if (this.x < this.radius) this.x = -this.x + this.size;
+            //if (this.x > window.innerWidth - this.radius) this.x = window.innerWidth - this.radius;
+            else if (this.x > window.innerWidth - this.radius) this.x = 2 * window.innerWidth - this.x - this.size;
         }
-        if (this.y < 0 || this.y > window.innerHeight - this.size) {
+        if (this.y < this.radius || this.y > window.innerHeight - this.radius) {
             this.vy *= -1; // Rebond vertical
 
-            if (this.y < 0) this.y = 0;
-            if (this.y > window.innerHeight - this.size) this.y = window.innerHeight - this.size;
+            if (this.y < this.radius) this.y = -this.y + this.size;
+            else if (this.y > window.innerHeight - this.radius) this.y = 2 * window.innerHeight - this.y - this.size;
         }
 
         this.updatePosition();
@@ -155,7 +158,7 @@ class Cercle {
 
 // Créer et animer les cercles
 const cercles = [];
-for (let i = 0; i < 100; i++) { // Ajoute 10 cercles
+for (let i = 0; i < 500; i++) { // Ajoute 10 cercles
     const cercle = new Cercle(document.body);
     cercle.element.onclick = () => cercle.handleClick();
     cercles.push(cercle);

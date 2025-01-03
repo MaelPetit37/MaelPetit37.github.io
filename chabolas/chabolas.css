@@ -8,8 +8,9 @@ body {
 .circle {
     position: absolute;
     border-radius: 50%;
-    box-shadow: -5px -3px 0 rgba(0, 0, 0, 0.2); /* Effet d'œil */
-    transition: transform 0.2s; /* Effet visuel pour le clic */
+    transition: transform 0.2s; /* Visual effect for click */
+    overflow: hidden; /* Ensures the image stays within the circle */
+    background-color: inherit; /* Keep the background from JS */
 }
 
 .container {
@@ -22,10 +23,27 @@ body {
     background-color: #1155AA; /* Couleur de fond */
 }
 
-.score {
+.text {
     position: absolute;
     top: 10px;
     left: 10px;
     color: white;
     font-size: 20px;
+}
+
+.fps {
+    position: absolute;
+    top: 40px;
+    right: 10px;
+    color: white;
+    font-size: 20px;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
