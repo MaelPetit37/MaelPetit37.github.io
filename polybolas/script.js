@@ -229,7 +229,7 @@
         if (nextCircle) backlayer.removeChild(nextCircle.graphics);
 
         // Create a new circle
-        nextCircle = new Circle(centerx, centery - spawnY, randomInt(maxTypes));
+        nextCircle = new Circle(centerx, bottomwall - spawnY, randomInt(maxTypes));
     }
 
     // #endregion
@@ -267,7 +267,7 @@
     const bounce = 0.99;
     const typetosizeconstant = 3;
     const typetosizescalar = 10;
-    const spawnY = 420;
+    const spawnY = 820;
     const spawnDelay = 600;
     const width = 600;
     const height = 800;
@@ -367,7 +367,7 @@
 
         setTimeout(() => {
             if (gameOver) return;
-            nextCircle = new Circle(e.clientX, centery - spawnY, randomInt(maxTypes));
+            nextCircle = new Circle(e.clientX, bottomwall - spawnY, randomInt(maxTypes));
             nextCircle.graphics.x = getNewX(e.clientX, nextCircle.radius);
         }, spawnDelay);
     });
