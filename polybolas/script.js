@@ -1,8 +1,8 @@
 (async () => {
     // Create a new application
     const app = new PIXI.Application({
-        backgroundColor: 0x87CEEB,  // Dark background color
-        resizeTo: window  // Make the canvas resize with the window
+        backgroundColor: 0x87CEEB, 
+        resizeTo: window
     });
 
     // Append the application canvas to the document body
@@ -24,7 +24,12 @@
             this.rotationSpeed = 0;
             this.isMerged = false;
 
-            this.graphics = PIXI.Sprite.from('assets/' + images[type - 1] + '.png');
+            var file = 'assets/' + images[type - 1] + '.png';
+            if (file === 'assets/monmarche.png' && randomInt(10) === 1) {
+                file = 'assets/monmarche2.png';
+            }
+
+            this.graphics = PIXI.Sprite.from(file);
             this.graphics.width = this.radius * 2;
             this.graphics.height = this.radius * 2;
             this.graphics.anchor.set(0.5, 0.5);
@@ -36,7 +41,7 @@
             this.vx = 0;
             this.vy = 0;
 
-            backlayer.addChild(this.graphics);  // Add the circle to the stage
+            midlayer.addChild(this.graphics);  // Add the circle to the stage
         }
 
         update(delta) {
@@ -100,17 +105,32 @@
                     );
     
                     // Remove the old circles from the stage
-                    backlayer.removeChild(this.graphics);
-                    backlayer.removeChild(other.graphics);
+                    midlayer.removeChild(this.graphics);
+                    midlayer.removeChild(other.graphics);
     
                     // Remove the old circles from the array
                     circles.splice(circles.indexOf(this), 1);
                     circles.splice(circles.indexOf(other), 1);
     
                     circles.push(circle);
-                    score += 2 ** (circle.type - 2);
+                    const gain = 2 ** (circle.type - 2);
+                    score += gain;
                     scoreText.text = `Score: ${score}`;
-    
+
+                    // Create a cat above the screen
+                    for (let i = 0; i < gain; i++) {
+                        const cat = PIXI.Sprite.from(cat_image);
+                        cat.anchor.set(0.5, 0.5);
+                        cat.x = Math.random() * app.view.width;
+                        cat.y = -140 - Math.random() * 100;
+                        cat.alpha = 0.8;
+                        cat.vy = 0 + Math.random() * 2;
+                        cat.vx = Math.random() * 2 - 1;
+                        cat.rotationSpeed = Math.random() * 0.1 - 0.05;
+                        cats.push(cat);
+                        backlayer.addChild(cat);
+                    }
+                    
                     return true;
                 }
 
@@ -223,13 +243,25 @@
         gameOver = false;
 
         // Remove all circles from the stage
-        circles.forEach(circle => backlayer.removeChild(circle.graphics));
+        circles.forEach(circle => midlayer.removeChild(circle.graphics));
         circles.length = 0;
 
-        if (nextCircle) backlayer.removeChild(nextCircle.graphics);
+        if (nextCircle) midlayer.removeChild(nextCircle.graphics);
 
         // Create a new circle
         nextCircle = new Circle(centerx, bottomwall - spawnY, randomInt(maxTypes));
+    }
+
+    function updateCat(cat, delta) {
+        cat.y += cat.vy * delta / 10;
+        cat.x += cat.vx * delta / 10;
+        cat.vy += gravity * delta;
+        cat.rotation += cat.rotationSpeed * delta / 30;
+
+        if (cat.y > app.view.height + 200) {
+            backlayer.removeChild(cat);
+            cats.splice(cats.indexOf(cat), 1);
+        }
     }
 
     // #endregion
@@ -252,6 +284,8 @@
         "tkindt",
         "venturini",
     ];
+
+    const cat_image = "assets/cat.png";
 
     // Sound effect
     const audio = new Audio('assets/pop.wav');
@@ -283,18 +317,23 @@
     // Create an array to store the circles
     const circles = [];
 
+    // Cat array
+    const cats = [];
+
     // Layers
     var backlayer = new PIXI.Container();
+    var midlayer = new PIXI.Container();
     var frontlayer = new PIXI.Container();
 
     app.stage.addChild(backlayer);
+    app.stage.addChild(midlayer);
     app.stage.addChild(frontlayer);
 
     // Shadow filter
     const shadowFilter = new PIXI.filters.DropShadowFilter();
     shadowFilter.angle = 5 / 4 * Math.PI;
     shadowFilter.distance = 6;
-    backlayer.filters = [shadowFilter];
+    midlayer.filters = [shadowFilter];
 
     // Variables
     var time1 = Date.now();
@@ -335,6 +374,7 @@
         if (gameOver) return;
         time2 = Date.now();
         circles.forEach(circle => circle.update(time2 - time1));
+        cats.forEach(cat => updateCat(cat, time2 - time1));
         time1 = time2;
 
         // Check for collisions between circles
