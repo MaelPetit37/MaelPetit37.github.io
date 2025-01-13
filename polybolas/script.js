@@ -119,7 +119,9 @@
 
                     // Create a cat above the screen
                     for (let i = 0; i < gain; i++) {
-                        const cat = PIXI.Sprite.from(cat_image);
+                        const cat = PIXI.Sprite.from('assets/' + cat_images[randomInt(3)]);
+                        cat.width = 200;
+                        cat.height = 200;
                         cat.anchor.set(0.5, 0.5);
                         cat.x = Math.random() * app.view.width;
                         cat.y = -140 - Math.random() * 100;
@@ -127,8 +129,9 @@
                         cat.vy = 0 + Math.random() * 2;
                         cat.vx = Math.random() * 2 - 1;
                         cat.rotationSpeed = Math.random() * 0.1 - 0.05;
-                        cats.push(cat);
                         backlayer.addChild(cat);
+                        // Add the cat to the array with a slight delay
+                        setTimeout(() => cats.push(cat), 200 * Math.sqrt(i));
                     }
                     
                     return true;
@@ -285,7 +288,12 @@
         "venturini",
     ];
 
-    const cat_image = "assets/cat.png";
+    const cat_images = [
+        "cat1.png",
+        "cat2.png",
+        "cat3.png",
+        "cat4.png",
+    ];
 
     // Sound effect
     const audio = new Audio('assets/pop.wav');
