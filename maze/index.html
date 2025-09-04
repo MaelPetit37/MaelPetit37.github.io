@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Maze Generator & Solver</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/7.2.1/pixi.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pixi-filters@latest/dist/browser/pixi-filters.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="script.js" type="module"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+    <header>
+        <h1>Interactive Maze</h1>
+        <div class="controls">
+            <div class="settings">
+                <div class="section">
+                    <h2>Generation</h2>
+                    <div class="input-group">
+                        <div class="input-pair">
+                            <label for="maze-width">Width:</label>
+                            <input type="number" id="maze-width" min="5" max="50" value="15">
+                        </div>
+                        <div class="input-pair">
+                            <label for="maze-height">Height:</label>
+                            <input type="number" id="maze-height" min="5" max="50" value="15">
+                        </div>
+                    </div>
+                    
+                    <label for="generation-algorithm">Generation Algorithm:</label>
+                    <select id="generation-algorithm">
+                        <option value="dfs">Depth-First Search</option>
+                        <option value="kruskal">Kruskal's Algorithm</option>
+                        <option value="prim">Prim's Algorithm</option>
+                        <option value="wilson">Wilson's Algorithm</option>
+                    </select>
+                    
+                    <button id="generate-btn">Generate</button>
+                </div>
+                
+                <div class="section">
+                    <h2>Solving</h2>
+                    <label for="solving-algorithm">Solving Algorithm:</label>
+                    <select id="solving-algorithm">
+                        <option value="astar">A* Algorithm</option>
+                        <option value="bfs">Breadth-First Search</option>
+                    </select>
+                    
+                    <div class="input-group slider-group">
+                        <label for="solving-speed">Animation Speed:</label>
+                        <div class="slider-container">
+                            <input type="range" id="solving-speed" min="0" max="500" value="10" step="10">
+                            <span id="speed-value">10ms</span>
+                        </div>
+                    </div>
+                    
+                    <div class="button-group">
+                        <button id="solve-btn">Solve</button>
+                        <button id="reset-viz-btn" class="secondary-button">Reset</button>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2>Other</h2>
+                    <button id="play-btn">Play</button>
+                    <button id="color-distance-btn" class="secondary-button">Color by Distance</button>
+                    <div class="toggleWrapper">
+                        <input type="checkbox" class="dn" id="theme-toggle" checked/>
+                        <label for="theme-toggle" class="toggle">
+                            <span class="toggle__handler">
+                                <span class="crater crater--1"></span>
+                                <span class="crater crater--2"></span>
+                                <span class="crater crater--3"></span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="landscape-footer">
+            <p>Created by MaelPetit37 - Interactive Maze Generator & Solver</p>
+        </div>
+    </header>
+    
+    <main>
+        <!-- This is where the PixiJS canvas will be added -->
+        <div id="maze-container" tabindex="0">
+            <div class="play-instructions">Use arrow keys to navigate the maze!</div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Created by MaelPetit37 - Interactive Maze Generator & Solver using PixiJS</p>
+    </footer>
+
+    <!-- PixiJS will be added here later -->
+    <!-- <script src="https://pixijs.download/release/pixi.min.js"></script> -->
+    
+    <!-- Main script file - to be added later -->
+    <!-- <script src="script.js"></script> -->
+</body>
+</html>
