@@ -52,7 +52,7 @@ export default class MazeController {
             height: this.mazeContainer.offsetHeight,
             backgroundColor: 0xFFFFFF,
             antialias: true,
-            resolution: window.devicePixelRatio || 1,
+            resolution: 1, // Fix by setting resolution to 1 instead of using DPR
             autoDensity: true // Adjust for pixel density
         });
         
@@ -103,7 +103,7 @@ export default class MazeController {
     setupResizeHandlers() {
         // Handle window resize
         window.addEventListener('resize', () => {
-            // Resize renderer to match container
+            // Resize renderer to match container, maintain resolution at 1
             this.app.renderer.resize(this.mazeContainer.offsetWidth, this.mazeContainer.offsetHeight);
             
             // Re-render maze if it exists

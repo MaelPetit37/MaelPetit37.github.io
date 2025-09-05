@@ -64,8 +64,10 @@ export default class Maze {
         
         // Calculate cell size to fit the maze in the available space
         const margin = 20;
-        const availableWidth = this.app.renderer.width - (margin * 2);
-        const availableHeight = this.app.renderer.height - (margin * 2);
+        // Use the view's clientWidth and clientHeight instead of renderer dimensions
+        // This ensures we're using the actual display size, not the internal canvas size
+        const availableWidth = this.app.view.clientWidth - (margin * 2);
+        const availableHeight = this.app.view.clientHeight - (margin * 2);
         
         // Ensure the maze fits within the container while maintaining its aspect ratio
         this.cellSize = Math.min(
@@ -78,8 +80,9 @@ export default class Maze {
         const totalHeight = this.height * this.cellSize;
         
         // Calculate the starting position to center the maze
-        const startX = (this.app.renderer.width - totalWidth) / 2;
-        const startY = (this.app.renderer.height - totalHeight) / 2;
+        // Use the view's clientWidth and clientHeight for proper centering
+        const startX = (this.app.view.clientWidth - totalWidth) / 2;
+        const startY = (this.app.view.clientHeight - totalHeight) / 2;
         
         // Draw the maze walls
         this.graphics.lineStyle(2, this.wallColor);
