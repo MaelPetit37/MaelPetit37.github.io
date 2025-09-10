@@ -148,23 +148,28 @@ class UIController {
         }
         
         if (state.isRunning !== undefined) {
-            this.updateButtonStates(state.isRunning);
+            this.updateButtonStates(state.isRunning, state.finished);
         }
         
-        if (state.finished) {
+        if (state.finished === true) {
             this.status.textContent = 'Sorted';
-            this.updateButtonStates(false);
+            this.updateButtonStates(false, true);
+        } else if (state.finished === false) {
+            // Explicitly re-enable buttons when marked as not finished (after shuffle)
+            this.updateButtonStates(false, false);
         }
     }
 
     /**
      * Update button states based on running status
      * @param {boolean} isRunning - Whether sorting is running
+     * @param {boolean} isSorted - Whether array is sorted (default: false)
      */
-    updateButtonStates(isRunning) {
-        this.startBtn.disabled = isRunning;
+    updateButtonStates(isRunning, isSorted = false) {
+        this.startBtn.disabled = isRunning || isSorted;
         this.pauseBtn.disabled = !isRunning;
         this.shuffleBtn.disabled = isRunning;
+        this.stepBtn.disabled = isSorted;
         this.algorithmSelect.disabled = isRunning;
         this.sizeSlider.disabled = isRunning;
     }

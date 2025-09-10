@@ -22,8 +22,10 @@ class Circle {
         this.element.style.width = `${this.size}px`;
         this.element.style.height = `${this.size}px`;
 
-        //this.element.style.backgroundColor = `hsl(${type * 72}, 80%, 60%)`;
-        this.element.style.backgroundImage = `url('assets/jan.png')`;
+        this.element.style.backgroundColor = `hsl(${type * 72}, 80%, 60%)`;
+        //this.element.style.backgroundImage = `url('assets/ball.png')`;
+        this.element.style.borderRadius = '50%';
+        this.element.style.border = '1px solid black';
         this.element.style.backgroundSize = 'cover';
         this.element.style.backgroundPosition = 'center';
 

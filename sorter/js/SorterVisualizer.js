@@ -29,7 +29,8 @@ class SorterVisualizer {
         this.currentAlgorithm = null;
         this.dataArray = [];
         this.arraySize = 30;
-        this.stepDelay = 50; // ms
+        // Initialize speed based on the initial slider value (100 = max speed)
+        this.stepDelay = this.calculateStepDelay(100); // For max speed
         this.isRunning = false;
         this.animationId = null;
         
@@ -70,7 +71,8 @@ class SorterVisualizer {
             this.uiController.updateControls({
                 comparisons: 0,
                 swaps: 0,
-                status: `Ready with ${algorithmName} sort`
+                status: `Ready with ${algorithmName} sort`,
+                finished: false // Mark as not finished to enable buttons
             });
         }
     }
@@ -94,7 +96,8 @@ class SorterVisualizer {
             this.uiController.updateControls({
                 comparisons: 0,
                 swaps: 0,
-                status: 'Array shuffled'
+                status: 'Array shuffled',
+                finished: false // Mark as not finished to enable buttons
             });
         }
     }
@@ -115,7 +118,8 @@ class SorterVisualizer {
             this.uiController.updateControls({
                 comparisons: 0,
                 swaps: 0,
-                status: 'Array resized'
+                status: 'Array resized',
+                finished: false // Mark as not finished to enable buttons
             });
         }
     }

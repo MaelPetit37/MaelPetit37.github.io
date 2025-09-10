@@ -59,25 +59,39 @@ body {
 
 header {
     text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: var(--panel-bg);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: width 0.3s, height 0.3s, margin 0.3s;
+}
+
+h1 {
+    color: var(--primary-color);
     margin-bottom: 20px;
 }
 
 /* Controls Panel */
-.controls-panel {
+.controls {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 15px;
-    padding: 15px;
-    background-color: var(--panel-bg);
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 15px;
+    align-items: center;
+    width: 100%;
+}
+
+.settings {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
 }
 
 .controls-section {
     background-color: var(--panel-bg);
-    border-radius: var(--border-radius);
     padding: 15px;
+    border-radius: var(--border-radius);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     border: 1px solid var(--border-color);
     min-width: 240px;
@@ -127,6 +141,7 @@ select:hover, select:focus {
 
 input[type="range"] {
     -webkit-appearance: none;
+    appearance: none;
     width: 100%;
     height: 8px;
     background: var(--border-color);
@@ -137,6 +152,7 @@ input[type="range"] {
 
 input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
+    appearance: none;
     width: 18px;
     height: 18px;
     background: var(--primary-color);
@@ -159,27 +175,37 @@ input[type="range"]:active::-webkit-slider-thumb {
 }
 
 /* Button Panel */
-.button-panel {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
-    flex-wrap: wrap;
-}
 
 button {
-    padding: 10px 20px;
+    padding: 10px 15px;
     background-color: var(--primary-color);
     color: white;
     border: none;
     border-radius: var(--border-radius);
     cursor: pointer;
     transition: background-color var(--transition-time), transform 0.1s;
-    font-size: 1rem;
-    min-width: 80px;
+    font-size: 1.1rem;
+    min-width: 45px;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 button:hover {
     background-color: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+button:disabled {
+    background-color: var(--border-color);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+button:active:not(:disabled) {
+    transform: scale(0.95);
 }
 
 button:active {
@@ -222,15 +248,24 @@ button:disabled {
     border-radius: var(--border-radius);
     border: 1px solid var(--border-color);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-.stats-panel div {
+.stats-panel div:not(.button-panel) {
     font-size: 0.95rem;
     padding: 5px 10px;
     background-color: rgba(0, 0, 0, 0.05);
     border-radius: var(--border-radius);
     min-width: 120px;
     text-align: center;
+}
+
+.button-panel {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-right: 15px;
 }
 
 .dark-theme .stats-panel div {

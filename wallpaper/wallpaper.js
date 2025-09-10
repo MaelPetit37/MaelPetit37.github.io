@@ -158,7 +158,7 @@ class Cercle {
 
 // Créer et animer les cercles
 const cercles = [];
-for (let i = 0; i < 500; i++) { // Ajoute 10 cercles
+for (let i = 0; i < 500; i++) {
     const cercle = new Cercle(document.body);
     cercle.element.onclick = () => cercle.handleClick();
     cercles.push(cercle);
