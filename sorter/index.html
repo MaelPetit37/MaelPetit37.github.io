@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Algorithm Visualizer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-theme">
+    <div class="container">
+        <header>
+            <h1>Sorting Algorithm Visualizer</h1>
+        </header>
+        
+        <div class="controls-panel">
+            <div class="controls-section">
+                <h3>Algorithm</h3>
+                <div class="control-group">
+                    <label for="algorithm-select">Sorting Method:</label>
+                    <select id="algorithm-select">
+                        <option value="bubble">Bubble Sort</option>
+                        <option value="selection">Selection Sort</option>
+                        <option value="insertion">Insertion Sort</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label for="size-slider">Array Size:</label>
+                    <div class="slider-container">
+                        <input type="range" id="size-slider" min="5" max="100" value="30">
+                        <span id="size-value">30</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="controls-section">
+                <h3>Visualization</h3>
+                <div class="control-group">
+                    <label for="speed-slider">Speed:</label>
+                    <div class="slider-container">
+                        <input type="range" id="speed-slider" min="0" max="100" value="50">
+                        <span id="speed-value">Medium</span>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label for="display-select">Display Type:</label>
+                    <select id="display-select">
+                        <option value="bars">Bars</option>
+                        <option value="dots">Dots</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="controls-section">
+                <h3>Appearance</h3>
+                <div class="control-group">
+                    <label for="color-select">Color Scheme:</label>
+                    <select id="color-select">
+                        <option value="mono">Monochrome</option>
+                        <option value="rainbow">Rainbow</option>
+                        <option value="cool">Cool</option>
+                        <option value="warm">Warm</option>
+                    </select>
+                </div>
+                
+                <div class="theme-toggle">
+                    <div class="toggleWrapper">
+                        <input type="checkbox" class="dn" id="theme-switch" checked/>
+                        <label for="theme-switch" class="toggle">
+                            <span class="toggle__handler">
+                                <span class="crater crater--1"></span>
+                                <span class="crater crater--2"></span>
+                                <span class="crater crater--3"></span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="button-panel">
+            <button id="shuffle-btn">Shuffle</button>
+            <button id="start-btn">Start</button>
+            <button id="pause-btn" disabled>Pause</button>
+            <button id="step-btn">Step</button>
+        </div>
+        
+        <div class="stats-panel">
+            <div>Comparisons: <span id="comparison-count">0</span></div>
+            <div>Swaps: <span id="swap-count">0</span></div>
+            <div>Status: <span id="status">Ready</span></div>
+        </div>
+        
+        <div class="visualization-container">
+            <div id="canvas-container"></div>
+        </div>
+    </div>
+
+    <!-- PixiJS Library -->
+    <script src="https://cdn.jsdelivr.net/npm/pixi.js@7.3.2/dist/pixi.min.js"></script>
+    
+    <!-- Core Classes -->
+    <script src="js/SortingAlgorithm.js"></script>
+    <script src="js/BubbleSort.js"></script>
+    <script src="js/SelectionSort.js"></script>
+    <script src="js/InsertionSort.js"></script>
+    <script src="js/DisplayManager.js"></script>
+    <script src="js/ThemeManager.js"></script>
+    <script src="js/UIController.js"></script>
+    <script src="js/SorterVisualizer.js"></script>
+    
+    <!-- Main Script -->
+    <script src="js/script.js"></script>
+</body>
+</html>
