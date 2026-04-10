@@ -6,6 +6,11 @@ export default function Page() {
     <main className="min-h-screen bg-neutral-900 text-neutral-100 py-10 px-5 font-sans">
       <div className="max-w-6xl mx-auto">
         <header className="text-center mb-12">
+          <div className="absolute top-0 right-0">
+            <span className="bg-yellow-400 text-black text-xl font-bold px-6 py-1 rounded-bl-lg uppercase shadow-md">
+              WIP
+            </span>
+          </div>
           <h1 className="text-4xl font-extrabold tracking-tight mb-2 text-white">Maël Petit</h1>
           <p className="text-lg text-neutral-400">Passionné d'informatique, diplômé d'école d'ingénieur et spécialisé en développement logiciel.</p>
 
