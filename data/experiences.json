@@ -1,0 +1,68 @@
+{
+    "experiences": [
+        {
+            "id": 1,
+            "role": "Stagiaire développement informatique",
+            "company": {
+                "name": "EDF",
+                "url": "https://www.edf.fr/"
+            },
+            "startDate": "Février 2025",
+            "endDate": "Août 2025",
+            "description": [
+                "Développement d'un outil de surveillance de tâches planifiées.",
+                "Création d'un tableau de bord pour le contrôle de l'administration des outils CAO.",
+                "Mise en place d'outils de réalité virtuelle et de CAO 3D.",
+                "Traitement de photos 360° des CNPE.",
+                "Analyse des besoins et développement en autonomie."
+            ],
+            "tools": [
+                "Python",
+                "PowerShell",
+                "Power BI"
+            ]
+        },
+        {
+            "id": 2,
+            "role": "Stagiaire développement full-stack",
+            "company": {
+                "name": "CGI",
+                "url": "https://www.cgi.com/france/fr-fr"
+            },
+            "startDate": "Juillet 2024",
+            "endDate": "Août 2024",
+            "description": [
+                "Conception et développement de nouvelles fonctionnalités.",
+                "Évolution et optimisation de la base de données.",
+                "Réalisation de tests unitaires et tests d'intégration.",
+                "Travail d'équipe, méthode agile."
+            ],
+            "tools": [
+                "C#",
+                "ASP.NET",
+                "JavaScript",
+                "Microsoft SQL Server",
+                "Microsoft Azure",
+                "Gitlab CI/CD"
+            ]
+        },
+        {
+            "id": 3,
+            "role": "Stagiaire IT",
+            "company": {
+                "name": "Vermon",
+                "url": "https://vermon.com/"
+            },
+            "startDate": "Juin 2021",
+            "description": [
+                "Évolution des outils de supervision d'un parc informatique.",
+                "Recherche et tests de logiciels pour la mise à jour de l'intranet."
+            ],
+            "tools": [
+                "Nginx",
+                "HTML",
+                "CSS"
+            ]
+        }
+    ]
+}
