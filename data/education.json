@@ -1,0 +1,48 @@
+{
+    "education": [
+        {
+            "id": 1,
+            "title": "Diplôme d'ingénieur en informatique",
+            "school": {
+                "name": "Polytech Tours",
+                "url": "https://polytech.univ-tours.fr/"
+            },
+            "city": "Tours",
+            "startDate": "Septembre 2020",
+            "endDate": "Septembre 2025",
+            "description": [
+                "Bases de la programmation : algorithmie, bases de données, design patterns.",
+                "Pratique de nombreux langages : Python, PHP, C, C++, Java, JavaScript ...",
+                "Domaines variés : web, IA, réseaux, informatique quantique, blockchain ...",
+                "Gestion de projet, travail en groupe et en autonomie."
+            ]
+        },
+        {
+            "id": 2,
+            "title": "Semestre Erasmus",
+            "school": {
+                "name": "Faculty of Electrical Engineering and Computing",
+                "url": "https://www.fer.unizg.hr/en"
+            },
+            "city": "Zagreb, Croatie",
+            "startDate": "Février 2024",
+            "endDate": "Juin 2024",
+            "description": [
+                "Intelligence artificielle et traitement automatique des langues (NLP).",
+                "Bio-informatique : séquençage de l'ADN.",
+                "Analyse de données multivariées."
+            ]
+        },
+        {
+            "id": 3,
+            "title": "Baccalauréat S SI",
+            "school": {
+                "name": "Lycée Grandmont",
+                "url": "https://lyceegrandmont.fr/"
+            },
+            "city": "Tours",
+            "startDate": "Septembre 2017",
+            "endDate": "Juillet 2020"
+        }
+    ]
+}

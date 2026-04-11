@@ -16,3 +16,22 @@ export interface Experience {
 export interface ExperienceCollection {
     experiences: Experience[];
 }
+
+export interface School {
+    name: string;
+    url: string;
+}
+
+export interface Education {
+    id: number;
+    title: string;
+    school: School;
+    city: string,
+    startDate: string;
+    endDate?: string;
+    description?: string[];
+}
+
+export interface EducationCollection {
+    education: Education[];
+}

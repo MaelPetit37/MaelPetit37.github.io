@@ -1,19 +1,21 @@
 // src/app/page.tsx (or your specific route folder)
 import ExperienceList from '@/components/ExperienceList';
+import EducationList from '@/components/EducationList';
 
 export default function Page() {
   return (
     <main className="min-h-screen bg-neutral-900 text-neutral-100 px-5 font-sans flex flex-col scroll-smooth">
       {/* 1. The Fixed Banner (Stays in the corner, ignored by layout) */}
-      <div className="fixed top-0 right-0 z-50">
+      <div className="absolute top-0 right-0 z-50">
         <span className="bg-yellow-400 text-black text-xl font-bold px-6 py-1 rounded-bl-lg uppercase shadow-md">
           WIP
         </span>
       </div>
 
       <nav className="fixed left-5 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-4">
-        <a href="#home" className="w-3 h-3 rounded-full bg-neutral-500 hover:bg-teal-300 transition-colors" title="Accueil"></a>
-        <a href="#experience" className="w-3 h-3 rounded-full bg-neutral-500 hover:bg-teal-300 transition-colors" title="Expérience"></a>
+        <a href="#home" className="w-3 h-3 rounded-full bg-neutral-500 hover:bg-yellow-300 transition-colors" title="Accueil"></a>
+        <a href="#experience" className="w-3 h-3 rounded-full bg-neutral-500 hover:bg-yellow-300 transition-colors" title="Expérience"></a>
+        <a href="#education" className="w-3 h-3 rounded-full bg-neutral-500 hover:bg-yellow-300 transition-colors" title="Formation"></a>
       </nav>
 
       <div id="home" className="flex-1 flex flex-col items-center justify-center max-w-6xl mx-auto w-full">
@@ -48,13 +50,20 @@ export default function Page() {
 
               </div>
             </div>
+            <a href="#experience" className="absolute bottom-10 animate-bounce">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-down" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1" />
+              </svg>
+            </a>
+
           </div>
         </header>
 
-        {/* This is where your component lives */}
         <ExperienceList />
 
-        <footer className="text-center mt-12 pt-8 border-t border-neutral-800 text-gray-500">
+        <EducationList />
+
+        <footer className="text-center mt-12 py-6 border-t border-neutral-800 text-gray-500">
           <p>© {new Date().getFullYear()} Maël Petit</p>
         </footer>
       </div>
