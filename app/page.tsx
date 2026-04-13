@@ -1,10 +1,11 @@
 // src/app/page.tsx (or your specific route folder)
 import ExperienceList from '@/components/ExperienceList';
 import EducationList from '@/components/EducationList';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 export default function Page() {
   return (
-    <main className="min-h-screen bg-neutral-900 text-neutral-100 px-5 font-sans flex flex-col scroll-smooth">
+    <main className="min-h-screen bg-neutral-300 dark:bg-neutral-900 px-5 font-sans flex flex-col scroll-smooth">
       {/* 1. The Fixed Banner (Stays in the corner, ignored by layout) */}
       <div className="absolute top-0 right-0 z-50">
         <span className="bg-yellow-400 text-black text-xl font-bold px-6 py-1 rounded-bl-lg uppercase shadow-md">
@@ -13,22 +14,26 @@ export default function Page() {
       </div>
 
       <nav className="fixed left-5 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-4">
-        <a href="#home" className="w-3 h-3 rounded-full bg-neutral-500 hover:bg-yellow-300 transition-colors" title="Accueil"></a>
-        <a href="#experience" className="w-3 h-3 rounded-full bg-neutral-500 hover:bg-yellow-300 transition-colors" title="Expérience"></a>
-        <a href="#education" className="w-3 h-3 rounded-full bg-neutral-500 hover:bg-yellow-300 transition-colors" title="Formation"></a>
+        <a href="#home" className="w-3 h-3 rounded-full bg-neutral-800 dark:bg-neutral-300 hover:bg-yellow-600 dark:hover:bg-yellow-300" title="Accueil"></a>
+        <a href="#experience" className="w-3 h-3 rounded-full bg-neutral-800 dark:bg-neutral-300 hover:bg-yellow-600 dark:hover:bg-yellow-300" title="Expérience"></a>
+        <a href="#education" className="w-3 h-3 rounded-full bg-neutral-800 dark:bg-neutral-300 hover:bg-yellow-600 dark:hover:bg-yellow-300" title="Formation"></a>
+      </nav>
+
+      <nav className="fixed left-5 top-1/25 -translate-y-1/2 z-40 flex flex-col gap-4">
+        <ThemeToggle />
       </nav>
 
       <div id="home" className="flex-1 flex flex-col items-center justify-center max-w-6xl mx-auto w-full">
         <header className="text-center">
           <div className="flex h-screen flex-col items-center justify-center">
             <div className="space-y-4 text-center">
-              <h1 className="text-4xl font-extrabold tracking-tight mb-2 text-white">Maël Petit</h1>
-              <p className="text-lg text-neutral-400">Passionné d'informatique, diplômé d'école d'ingénieur et spécialisé en développement logiciel.</p>
+              <h1 className="text-4xl font-extrabold tracking-tight mb-2 text-neutral-800 dark:text-neutral-100">Maël Petit</h1>
+              <p className="text-lg text-neutral-800 dark:text-neutral-400">Passionné d'informatique, diplômé d'école d'ingénieur et spécialisé en développement logiciel.</p>
 
               <div className="flex justify-center items-center gap-6 mt-5">
                 <a
                   href="mailto:contact@maelpetit.fr"
-                  className="text-neutral-400 hover:text-white transition-colors duration-200"
+                  className="text-neutral-800 dark:text-neutral-300 hover:text-[#E8B333] dark:hover:text-[#F1E436] transition-colors duration-200"
                   aria-label="Email me"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-envelope-fill" viewBox="0 0 16 16">
@@ -40,7 +45,7 @@ export default function Page() {
                   href="https://linkedin.com/in/m-petit"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-neutral-400 hover:text-[#0a66c2] transition-colors duration-200"
+                  className="text-neutral-800 dark:text-neutral-300 hover:text-[#0a66c2] transition-colors duration-200"
                   aria-label="LinkedIn Profile"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-linkedin" viewBox="0 0 16 16">
@@ -50,8 +55,8 @@ export default function Page() {
 
               </div>
             </div>
-            <a href="#experience" className="absolute bottom-10 animate-bounce">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-down" viewBox="0 0 16 16">
+            <a href="#experience" className="absolute bottom-10 text-neutral-800 hover:text-black dark:text-neutral-300 dark:hover:text-white">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-arrow-down animate-bounce" viewBox="0 0 16 16">
                 <path fillRule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1" />
               </svg>
             </a>
@@ -63,7 +68,7 @@ export default function Page() {
 
         <EducationList />
 
-        <footer className="text-center mt-12 py-6 border-t border-neutral-800 text-gray-500">
+        <footer className="text-center mt-12 py-6 border-t border-neutral-800 text-neutral-800 dark:border-neutral-700 dark:text-neutral-400">
           <p>© {new Date().getFullYear()} Maël Petit</p>
         </footer>
       </div>

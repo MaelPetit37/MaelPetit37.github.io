@@ -9,7 +9,7 @@ const ExperienceList: React.FC = () => {
 
     return (
         <section id="experience" className="py-8 px-4 w-full">
-            <h2 className="text-3xl font-bold mb-8 text-center text-neutral-100">Expérience professionnelle</h2>
+            <h2 className="text-3xl font-bold mb-8 text-center text-neutral-800 dark:text-neutral-100">Expérience professionnelle</h2>
 
             <div className="flex flex-col gap-2 max-w-4xl mx-auto">
                 {experiences.map((exp: Experience) => (
