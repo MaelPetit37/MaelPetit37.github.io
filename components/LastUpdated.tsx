@@ -1,23 +1,31 @@
-'use client';
-import React, { useEffect, useState } from 'react';
+'use client'
+import { useEffect, useState } from 'react'
 
-const LastUpdated: React.FC = () => {
-    const [mounted, setMounted] = useState(false);
+export default function LastUpdated() {
+    const [dateString, setDateString] = useState("")
 
     useEffect(() => {
-        setMounted(true);
-    }, []);
+        const rawDate = process.env.NEXT_PUBLIC_LAST_UPDATED
 
-    const rawDate = process.env.NEXT_PUBLIC_LAST_UPDATED;
+        if (rawDate) {
+            const date = new Date(rawDate)
 
-    // If the site is building or the variable is missing, show nothing
-    if (!mounted || !rawDate) return null;
+            // Check if the date is actually valid before trying to format it
+            if (!isNaN(date.getTime())) {
+                setDateString(date.toLocaleDateString('fr-FR', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric'
+                }))
+            }
+        }
+    }, [])
+
+    if (!dateString) return null // Hide it entirely if the date is invalid
 
     return (
         <span className="whitespace-nowrap text-xs">
-            Dernière mise à jour : {new Date(rawDate).toLocaleString()}
+            Dernière mise à jour : {dateString}
         </span>
-    );
-};
-
-export default LastUpdated;
+    )
+}
