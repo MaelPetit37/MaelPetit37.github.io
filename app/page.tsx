@@ -2,6 +2,7 @@
 import ExperienceList from '@/components/ExperienceList';
 import EducationList from '@/components/EducationList';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import LastUpdated from '@/components/LastUpdated';
 
 export default function Page() {
   return (
@@ -67,11 +68,24 @@ export default function Page() {
         <ExperienceList />
 
         <EducationList />
-
-        <footer className="text-center mt-12 py-6 border-t border-neutral-800 text-neutral-800 dark:border-neutral-700 dark:text-neutral-400">
-          <p>© {new Date().getFullYear()} Maël Petit</p>
-        </footer>
       </div>
+      <footer className="mt-12 text-neutral-800 dark:text-neutral-400">
+        <div className="w-full px-4 grid grid-cols-3 items-center">
+
+          <div aria-hidden="true"></div>
+
+          <div className="flex justify-center">
+            <p className="text-center whitespace-nowrap py-6 border-t border-neutral-800 dark:border-neutral-700">
+              © {new Date().getFullYear()} Maël Petit
+            </p>
+          </div>
+
+          <div className="justify-self-end">
+            <LastUpdated />
+          </div>
+
+        </div>
+      </footer>
     </main >
   );
 }
