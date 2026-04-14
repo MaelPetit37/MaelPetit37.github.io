@@ -1,8 +1,11 @@
 'use client'
 import { useEffect, useState } from 'react'
+import update from '@/data/update.json';
+import { Update } from '@/types';
 
 export default function LastUpdated() {
     const [dateString, setDateString] = useState("")
+    const { updateMessage } = update as Update;
 
     useEffect(() => {
         const rawDate = process.env.NEXT_PUBLIC_LAST_UPDATED
@@ -25,7 +28,7 @@ export default function LastUpdated() {
 
     return (
         <span className="whitespace-nowrap text-xs">
-            Dernière mise à jour : {dateString}
+            {updateMessage} : {dateString}
         </span>
     )
 }

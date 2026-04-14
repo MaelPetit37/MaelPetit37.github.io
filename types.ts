@@ -14,6 +14,7 @@ export interface Experience {
 }
 
 export interface ExperienceCollection {
+    title: string;
     experiences: Experience[];
 }
 
@@ -33,5 +34,14 @@ export interface Education {
 }
 
 export interface EducationCollection {
+    title: string;
     education: Education[];
+}
+
+export interface GlobalData {
+    introduction: string;
+}
+
+export interface Update {
+    updateMessage: string;
 }

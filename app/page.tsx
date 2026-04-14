@@ -3,8 +3,11 @@ import ExperienceList from '@/components/ExperienceList';
 import EducationList from '@/components/EducationList';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import LastUpdated from '@/components/LastUpdated';
+import globalData from '@/data/global.json';
+import { GlobalData } from '@/types';
 
 export default function Page() {
+  const { introduction } = globalData as GlobalData;
   return (
     <main className="min-h-screen bg-neutral-300 dark:bg-neutral-900 px-5 font-sans flex flex-col scroll-smooth">
       {/* 1. The Fixed Banner (Stays in the corner, ignored by layout) */}
@@ -29,7 +32,7 @@ export default function Page() {
           <div className="flex h-screen flex-col items-center justify-center">
             <div className="space-y-4 text-center">
               <h1 className="text-4xl font-extrabold tracking-tight mb-2 text-neutral-800 dark:text-neutral-100">Maël Petit</h1>
-              <p className="text-lg text-neutral-800 dark:text-neutral-400">Passionné d'informatique, diplômé d'école d'ingénieur et spécialisé en développement logiciel.</p>
+              <p className="text-lg text-neutral-800 dark:text-neutral-400">{introduction}</p>
 
               <div className="flex justify-center items-center gap-6 mt-5">
                 <a
