@@ -18,14 +18,14 @@ export default function Page() {
         </span>
       </div>
 
-      <nav className="fixed left-5 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-4">
+      <nav className="fixed left-5 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col gap-4">
         <a href="#home" className="w-3 h-3 rounded-full bg-neutral-800 dark:bg-neutral-300 hover:bg-yellow-600 dark:hover:bg-yellow-300" title="Accueil"></a>
         <a href="#experience" className="w-3 h-3 rounded-full bg-neutral-800 dark:bg-neutral-300 hover:bg-yellow-600 dark:hover:bg-yellow-300" title="Expérience"></a>
         <a href="#education" className="w-3 h-3 rounded-full bg-neutral-800 dark:bg-neutral-300 hover:bg-yellow-600 dark:hover:bg-yellow-300" title="Formation"></a>
         <a href="#tools" className="w-3 h-3 rounded-full bg-neutral-800 dark:bg-neutral-300 hover:bg-yellow-600 dark:hover:bg-yellow-300" title="Outils"></a>
       </nav>
 
-      <nav className="fixed left-5 top-1/25 -translate-y-1/2 z-40 flex flex-col gap-4">
+      <nav className="absolute top-12 md:fixed md:left-5 md:top-1/25 -translate-y-1/2 z-40 flex flex-col gap-4">
         <ThemeToggle />
       </nav>
 
@@ -80,17 +80,17 @@ export default function Page() {
 
 
       <footer className="mt-12 text-neutral-800 dark:text-neutral-400">
-        <div className="w-full px-4 grid grid-cols-3 items-center">
+        <div className="w-full px-4 flex flex-col items-center gap-2 md:grid md:grid-cols-3">
 
-          <div aria-hidden="true"></div>
+          <div className="hidden md:block" aria-hidden="true"></div>
 
-          <div className="flex justify-center">
-            <p className="text-center whitespace-nowrap py-6 border-t border-neutral-800 dark:border-neutral-700">
+          <div className="flex justify-center w-full md:w-auto">
+            <p className="text-center whitespace-nowrap py-6 border-t border-neutral-800 dark:border-neutral-700 w-full md:w-auto">
               © {new Date().getFullYear()} Maël Petit
             </p>
           </div>
 
-          <div className="justify-self-end">
+          <div className="md:justify-self-end pb-6 md:pb-0">
             <LastUpdated />
           </div>
 
