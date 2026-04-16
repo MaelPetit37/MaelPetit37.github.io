@@ -1,0 +1,153 @@
+{
+    "title": "Outils",
+    "categories": [
+        {
+            "id": "back-end",
+            "name": "Back-end"
+        },
+        {
+            "id": "front-end",
+            "name": "Front-end"
+        },
+        {
+            "id": "script",
+            "name": "Scripting"
+        },
+        {
+            "id": "low-level",
+            "name": "Bas niveau"
+        },
+        {
+            "id": "database",
+            "name": "Bases de données"
+        },
+        {
+            "id": "devops",
+            "name": "DevOps"
+        }
+    ],
+    "tools": [
+        {
+            "id": "dotnet",
+            "name": ".NET",
+            "categoryId": "back-end",
+            "logo": "dotnet.svg"
+        },
+        {
+            "id": "csharp",
+            "name": "C#",
+            "categoryId": "back-end",
+            "logo": "csharp.svg"
+        },
+        {
+            "id": "java",
+            "name": "Java",
+            "categoryId": "back-end",
+            "logo": "java.svg"
+        },
+        {
+            "id": "php",
+            "name": "PHP",
+            "categoryId": "back-end",
+            "logo": "php.svg"
+        },
+        {
+            "id": "nextjs",
+            "name": "Next.js",
+            "categoryId": "front-end",
+            "logo": "nextjs.svg",
+            "invert": true
+        },
+        {
+            "id": "react",
+            "name": "React",
+            "categoryId": "front-end",
+            "logo": "react.svg"
+        },
+        {
+            "id": "typescript",
+            "name": "TypeScript",
+            "categoryId": "front-end",
+            "logo": "typescript.svg"
+        },
+        {
+            "id": "javascript",
+            "name": "JavaScript",
+            "categoryId": "front-end",
+            "logo": "javascript.svg"
+        },
+        {
+            "id": "tailwindcss",
+            "name": "Tailwind CSS",
+            "categoryId": "front-end",
+            "logo": "tailwindcss.svg"
+        },
+        {
+            "id": "html5",
+            "name": "HTML5",
+            "categoryId": "front-end",
+            "logo": "html5.svg"
+        },
+        {
+            "id": "css",
+            "name": "CSS",
+            "categoryId": "front-end",
+            "logo": "css.svg"
+        },
+        {
+            "id": "python",
+            "name": "Python",
+            "categoryId": "script",
+            "logo": "python.svg"
+        },
+        {
+            "id": "powershell",
+            "name": "PowerShell",
+            "categoryId": "script",
+            "logo": "powershell.svg"
+        },
+        {
+            "id": "c",
+            "name": "C",
+            "categoryId": "low-level",
+            "logo": "c.svg"
+        },
+        {
+            "id": "cplusplus",
+            "name": "C++",
+            "categoryId": "low-level",
+            "logo": "cplusplus.svg"
+        },
+        {
+            "id": "mysql",
+            "name": "MySQL",
+            "categoryId": "database",
+            "logo": "mysql.svg"
+        },
+        {
+            "id": "sqlserver",
+            "name": "SQL Server",
+            "categoryId": "database",
+            "logo": "sqlserver.svg"
+        },
+        {
+            "id": "github",
+            "name": "GitHub Actions",
+            "categoryId": "devops",
+            "logo": "github.svg",
+            "invert": true
+        },
+        {
+            "id": "gitlab",
+            "name": "GitLab CI/CD",
+            "categoryId": "devops",
+            "logo": "gitlab.svg"
+        },
+        {
+            "id": "docker",
+            "name": "Docker",
+            "categoryId": "devops",
+            "logo": "docker.svg"
+        }
+    ]
+}

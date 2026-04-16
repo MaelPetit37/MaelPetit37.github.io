@@ -45,3 +45,22 @@ export interface GlobalData {
 export interface Update {
     updateMessage: string;
 }
+
+export interface ToolCategory {
+    id: string;
+    name: string;
+}
+
+export interface Tool {
+    id: string;
+    name: string;
+    categoryId: string;
+    logo: string;
+    invert?: boolean;
+}
+
+export interface ToolCollection {
+    title: string;
+    categories: ToolCategory[];
+    tools: Tool[];
+}
