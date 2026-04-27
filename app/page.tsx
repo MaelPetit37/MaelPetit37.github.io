@@ -2,6 +2,7 @@
 import ExperienceList from '@/components/ExperienceList';
 import EducationList from '@/components/EducationList';
 import ToolList from '@/components/ToolList';
+import ProjectList from '@/components/ProjectList';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import LastUpdated from '@/components/LastUpdated';
 import globalData from '@/data/global.json';
@@ -22,6 +23,7 @@ export default function Page() {
         <a href="#home" className="w-3 h-3 rounded-full bg-neutral-800 dark:bg-neutral-300 hover:bg-yellow-600 dark:hover:bg-yellow-300" title="Accueil"></a>
         <a href="#experience" className="w-3 h-3 rounded-full bg-neutral-800 dark:bg-neutral-300 hover:bg-yellow-600 dark:hover:bg-yellow-300" title="Expérience"></a>
         <a href="#education" className="w-3 h-3 rounded-full bg-neutral-800 dark:bg-neutral-300 hover:bg-yellow-600 dark:hover:bg-yellow-300" title="Formation"></a>
+        <a href="#projects" className="w-3 h-3 rounded-full bg-neutral-800 dark:bg-neutral-300 hover:bg-yellow-600 dark:hover:bg-yellow-300" title="Projets"></a>
         <a href="#tools" className="w-3 h-3 rounded-full bg-neutral-800 dark:bg-neutral-300 hover:bg-yellow-600 dark:hover:bg-yellow-300" title="Outils"></a>
       </nav>
 
@@ -73,6 +75,8 @@ export default function Page() {
         <ExperienceList />
 
         <EducationList />
+
+        <ProjectList />
 
         <ToolList />
       </div>

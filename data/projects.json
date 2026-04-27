@@ -53,7 +53,7 @@
             "summary": "Utilisation du traitement naturel du langage (NLP) pour analyser les interactions sur Twitter et Reddit.",
             "details": [
                 "Analyse de 8 000 messages pour déterminer le type de réaction (accord, désaccord, question).",
-                "Entraînement de modèles de langage avancés (BERT, RoBERTa ...) spécialisés dans la compréhension textuelle.",
+                "Entraînement de modèles de langage avancés (BERT, RoBERTa... ) spécialisés dans la compréhension textuelle.",
                 "Fusion de plusieurs modèles (approche ensembliste) pour améliorer la fiabilité des prédictions."
             ],
             "tools": [

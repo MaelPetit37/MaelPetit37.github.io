@@ -64,3 +64,17 @@ export interface ToolCollection {
     categories: ToolCategory[];
     tools: Tool[];
 }
+
+export interface Project {
+    id: number;
+    title: string;
+    date: string;
+    summary: string;
+    details: string[];
+    tools: string[];
+}
+
+export interface ProjectCollection {
+    title: string;
+    projects: Project[];
+}
