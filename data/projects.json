@@ -1,0 +1,64 @@
+{
+    "title": "Projets",
+    "projects": [
+        {
+            "id": 1,
+            "title": "Portfolio Professionnel",
+            "date": "2026",
+            "summary": "Conception et développement du site web sur lequel vous naviguez actuellement.",
+            "details": [
+                "Architecture moderne utilisant Next.js et TypeScript pour une navigation fluide.",
+                "Mise en place d'un pipeline d'intégration continue (GitHub Actions) pour un déploiement automatisé."
+            ],
+            "tools": [
+                "Next.js",
+                "React",
+                "TypeScript",
+                "Tailwind CSS",
+                "GitHub Actions"
+            ]
+        },
+        {
+            "id": 2,
+            "title": "IA & Santé : Détection de l'autisme",
+            "date": "2024",
+            "summary": "Analyse du regard (eye-tracking) pour aider au diagnostic précoce des troubles du spectre autistique.",
+            "details": [
+                "Analyse des mouvements oculaires d'un panel d'enfants face à des stimuli visuels (vidéos et images).",
+                "Développement d'algorithmes de comparaison de trajectoires et de formes pour identifier des comportements types.",
+                "Utilisation du Machine Learning pour atteindre un taux de précision de 80% dans la classification."
+            ],
+            "tools": [
+                "Python"
+            ]
+        },
+        {
+            "id": 3,
+            "title": "Bio-informatique : Analyse génétique",
+            "date": "2024",
+            "summary": "Identification de variantes génétiques par le regroupement (clustering) de séquences ADN.",
+            "details": [
+                "Traitement de données massives : analyse de 250 000 séquences ADN provenant de 50 spécimens de cerfs.",
+                "Mesure de similarité entre séquences pour regrouper les gènes identiques ou proches.",
+                "Optimisation d'algorithmes de classification pour gagner en rapidité et en précision de détection."
+            ],
+            "tools": [
+                "Python"
+            ]
+        },
+        {
+            "id": 4,
+            "title": "Analyse de Sentiments sur les Réseaux Sociaux",
+            "date": "2024",
+            "summary": "Utilisation du traitement naturel du langage (NLP) pour analyser les interactions sur Twitter et Reddit.",
+            "details": [
+                "Analyse de 8 000 messages pour déterminer le type de réaction (accord, désaccord, question).",
+                "Entraînement de modèles de langage avancés (BERT, RoBERTa ...) spécialisés dans la compréhension textuelle.",
+                "Fusion de plusieurs modèles (approche ensembliste) pour améliorer la fiabilité des prédictions."
+            ],
+            "tools": [
+                "Python"
+            ]
+        }
+    ]
+}
