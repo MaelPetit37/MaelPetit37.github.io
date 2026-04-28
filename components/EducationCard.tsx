@@ -28,7 +28,7 @@ const EducationCard: React.FC<EducationCardProps> = ({
                     </a>
                 </div>
 
-                <div className="text-sm text-purple-800 dark:text-purple-400 text-right">
+                <div className="text-sm text-purple-800 dark:text-purple-400 text-left md:text-right">
                     <div className="flex">
                         <span>{startDate}</span>
                         {endDate && (

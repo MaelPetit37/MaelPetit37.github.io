@@ -16,10 +16,13 @@ const EducationList: React.FC = () => {
                         key={category.id}
                         className="grid grid-cols-1 md:grid-cols-[150px_1fr] items-center gap-4 py-4"
                     >
-                        <h3 className="text-lg font-semibold text-neutral-800 dark:text-neutral-100">
+                        {/* Centers text on mobile, aligns left on desktop */}
+                        <h3 className="text-lg font-semibold text-neutral-800 dark:text-neutral-100 text-center md:text-left">
                             {category.name}
                         </h3>
-                        <div className="flex flex-wrap gap-4">
+
+                        {/* Centers logos on mobile, aligns left on desktop */}
+                        <div className="flex flex-wrap gap-4 justify-center md:justify-start">
                             {tools
                                 .filter(t => t.categoryId === category.id)
                                 .map((tool: Tool) => (
