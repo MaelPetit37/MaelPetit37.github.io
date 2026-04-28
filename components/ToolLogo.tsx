@@ -10,7 +10,7 @@ const ToolLogo: React.FC<ToolProps> = ({
     invert
 }) => {
     return (
-        <div className="relative h-16 w-16 transition duration-300 hover:scale-130">
+        <div className="relative h-16 w-16 transition duration-300 ease-in-out hover:scale-130">
             <a title={name} className="relative block h-full w-full">
                 <Image
                     src={`/logos/${logo}`}
