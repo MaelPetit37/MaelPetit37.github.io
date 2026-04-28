@@ -12,12 +12,7 @@ export default function Page() {
   const { introduction } = globalData as GlobalData;
   return (
     <main className="min-h-screen bg-neutral-300 dark:bg-neutral-900 px-5 font-sans flex flex-col scroll-smooth">
-      {/* 1. The Fixed Banner (Stays in the corner, ignored by layout) */}
-      <div className="absolute top-0 right-0 z-50">
-        <span className="bg-yellow-400 text-black text-xl font-bold px-6 py-1 rounded-bl-lg uppercase shadow-md">
-          WIP
-        </span>
-      </div>
+
 
       <nav className="fixed left-5 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col gap-4">
         <a href="#home" className="w-3 h-3 rounded-full bg-neutral-800 dark:bg-neutral-300 hover:bg-yellow-600 dark:hover:bg-yellow-300" title="Accueil"></a>
