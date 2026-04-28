@@ -31,7 +31,7 @@ export default function Page() {
               <div className="flex justify-center items-center gap-6 mt-5">
                 <a
                   href="mailto:contact@maelpetit.fr"
-                  className="text-neutral-800 dark:text-neutral-300 hover:text-[#E8B333] dark:hover:text-[#F1E436] transition-colors duration-200"
+                  className="text-neutral-800 dark:text-neutral-300 hover:text-[#E8B333] dark:hover:text-[#F1E436] transition duration-300 ease-in-out hover:scale-130"
                   aria-label="Email me"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-envelope-fill" viewBox="0 0 16 16">
@@ -43,7 +43,7 @@ export default function Page() {
                   href="https://linkedin.com/in/m-petit"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-neutral-800 dark:text-neutral-300 hover:text-[#0a66c2] transition-colors duration-200"
+                  className="text-neutral-800 dark:text-neutral-300 hover:text-[#0a66c2] transition duration-300 ease-in-out hover:scale-130"
                   aria-label="LinkedIn Profile"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-linkedin" viewBox="0 0 16 16">
@@ -53,7 +53,7 @@ export default function Page() {
 
               </div>
             </div>
-            <a href="#experience" className="absolute bottom-10 text-neutral-800 hover:text-black dark:text-neutral-300 dark:hover:text-white">
+            <a href="#experience" className="absolute bottom-10 text-neutral-800 hover:text-black dark:text-neutral-300 dark:hover:text-white transition duration-300 ease-in-out hover:scale-110">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-arrow-down animate-bounce" viewBox="0 0 16 16">
                 <path fillRule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1" />
               </svg>
