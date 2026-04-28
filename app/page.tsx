@@ -89,7 +89,7 @@ export default function Page() {
           <div className="hidden md:block" aria-hidden="true"></div>
 
           <div className="flex justify-center w-full md:w-auto">
-            <p className="text-center whitespace-nowrap py-6 border-t border-neutral-800 dark:border-neutral-700 w-full md:w-auto">
+            <p className="text-center whitespace-nowrap py-6 border-t border-neutral-800 dark:border-neutral-400 w-full md:w-auto">
               © {new Date().getFullYear()} Maël Petit
             </p>
           </div>
